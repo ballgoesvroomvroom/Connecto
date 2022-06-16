@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=10.0, minimum-scale=.25, user-scalable=yes"/>
+		<meta name="description" content="page description here"/>
+
+		<link rel="stylesheet" href="css/includes/reset.css">
+		<link rel="stylesheet" href="css/base.css">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="" rel="stylesheet">
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script src="js/app.js"></script>
+
+		<title>Connecto</title>
+	</head>
+	<body style="max-width: 100%; min-height: 100vh">
+		<div id="container">
+			<div id="display">
+				<div id="view">
+					<div id="top">
+						<div id="stat">
+							<p><img src="img/device.svg">: device</p>
+						</div>
+						<div id="upload-container">
+							<button id="upload-button" class="action-button">[ Push ]</button>
+						</div>
+					</div>
+					<div id="main-viewer" class="img-bg">
+						<button id="full-hint"><img src="img/width_full.svg"></button>
+						<img id="main-viewer-img" src="https://catonwater.com/img/includes/blog/bg.jpg">
+					</div>
+				</div>
+				<div id="collection">
+				</div>
+			</div>
+			<div id="room-action">
+				<button id="join-room" class="action-button">[ Join room ]</button>
+				<button id="create-room" class="action-button">[ Create room ]</button>
+				<div id="room-info">
+					<p id="room-info-id">Current room: #</p>
+				</div>
+			</div>
+		</div>
+		<div id="input-modal">
+			<div id="input-modal-out">
+			</div>
+			<div id="modal-content">
+				<form>
+					<label for="roomid">Room ID</label>
+					<input id="join-room-input" type="text" name="roomid" pattern="[a-fA-F\d]{6}" title="Room ID consists of 6 hex characters (0-9, A-F)">
+					<button id="join-room-confirm" type="submit">Join</button>
+				</form>
+			</div>
+		</div>
+		<input id="file-upload" type="file" name="file-upload" style="display: none;">
+	</body>
+</html>
