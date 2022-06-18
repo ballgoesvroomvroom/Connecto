@@ -115,7 +115,7 @@ class Client {
 		this.metadata.connectedTo = roomInstance;
 
 		// notify actual client
-		client.send("room-id", {"payload": roomInstance.id});
+		this.send("room-id", {"payload": roomInstance.id});
 	}
 
 	leaveRoom() {
@@ -125,6 +125,7 @@ class Client {
 			this.metadata.connectedTo.removeClient(this);
 		}
 		this.metadata.connectedTo = null;
+		this.send("room-id", {"payload": "#"}); // send empty room id; to denote client is not in a room
 	}
 }
 

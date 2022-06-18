@@ -41,7 +41,7 @@ class Room {
 			return false; // prevent an recursive loop
 		}
 		this.guests.set(client, true); // placeholder value for now
-		return true
+		return true;
 	}
 
 	removeClient(client) {
@@ -58,7 +58,6 @@ class Room {
 	}
 
 	destroy(calledbyHost=false) {
-		console.log(calledbyHost)
 		// kick out everyone
 		if (!calledbyHost) {
 			// host didn't call .destroy(), kick host out too

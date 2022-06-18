@@ -33,8 +33,8 @@ wss.on("connection", (ws) => {
 	const id = crypto.randomBytes(16).toString("hex")
 	const connectedTo = null
 
-	const metadata = { connectedTo }
-	client = new clients.Client(ws, metadata)
+	const metadata = { connectedTo, id }
+	let client = new clients.Client(ws, metadata)
 
 	client.on("createRoom", () => {
 		room = new rooms.Room(client)
@@ -46,15 +46,15 @@ wss.on("connection", (ws) => {
 		// find if room exists
 
 		// validate data id
-		var id = data.id;
-		if (id.length != 6 || !((/^[a-fA-F\d]{6}$/).test(id))) {
+		var roomid = data.id;
+		if (roomid.length != 6 || !((/^[a-fA-F\d]{6}$/).test(roomid))) {
 			client.error("invalid room id")
 			return;
 		}
 
-		if (rooms.roomMapping.has(id)) {
+		if (rooms.roomMapping.has(roomid)) {
 			// room exists
-			client.joinRoom(rooms.roomMapping.get(id));
+			client.joinRoom(rooms.roomMapping.get(roomid));
 		} else {
 			// no room exists
 			client.error("no room exists")
