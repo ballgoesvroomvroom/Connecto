@@ -48,7 +48,7 @@ wss.on("connection", (ws) => {
 		// validate data id
 		var id = data.id;
 		if (id.length != 6 || !((/^[a-fA-F\d]{6}$/).test(id))) {
-			client.send("error", {payload: "invalid room id"})
+			client.error("invalid room id")
 			return;
 		}
 
@@ -57,7 +57,7 @@ wss.on("connection", (ws) => {
 			client.joinRoom(rooms.roomMapping.get(id));
 		} else {
 			// no room exists
-			client.send("error", {payload: "no room exists"})
+			client.error("no room exists")
 		}
 	})
 
