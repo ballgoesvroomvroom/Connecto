@@ -39,6 +39,7 @@ class Client {
 $(document).ready(async function(e) {
 	const $selectors = {
 		"main-viewer-img": $("#main-viewer-img"),
+		"full-hint": $("#full-hint"),
 
 		"create-room": $("#create-room"),
 		"join-room": $("#join-room"),
@@ -124,8 +125,16 @@ $(document).ready(async function(e) {
 		fr.readAsDataURL(this.files[0])
 	})
 
+	$selectors["full-hint"].on("click", (e) => {
+		// full-screen
+		var data = $selectors["main-viewer-img"].attr("src");
+
+		// neat solution of converting base64 uri to a blob
+		// @https://stackoverflow.com/a/36183085/12031810
+		fetch(data).then(r => r.blob()).then(d => window.open(URL.createObjectURL(d), "_blank"))
+	})
+
 
 	// initialise a room
-	window
 	client.send("createRoom")
 })
