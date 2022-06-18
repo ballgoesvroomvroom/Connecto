@@ -90,7 +90,7 @@ class Client {
 
 	error(msg) {
 		// notify browswer (client side) of an error
-		this.ws.send(JSON.stringify("error", {payload: msg});
+		this.ws.send(JSON.stringify("error", {payload: msg}));
 	}
 
 	destroy() {
